@@ -3,12 +3,17 @@
 namespace App\Service;
 
 use App\Entity\BigFootSighting;
-use App\Model\BigFootSightingScore;
+use App\Model\DebuggableBigFootSightingScore;
 
 class DebuggableSightingScorer extends SightingScorer
 {
-    public function score(BigFootSighting $bigFootSighting): BigFootSightingScore
+    public function score(BigFootSighting $bigFootSighting): DebuggableBigFootSightingScore
     {
-        return parent::score($bigFootSighting);
+        $bfScore = parent::score($bigFootSighting);
+        
+        return new DebuggableBigFootSightingScore(
+            $bfScore->getScore(),
+            100
+        );
     }
 }
