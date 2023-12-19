@@ -10,4 +10,9 @@ class MaxScoreAdjuster implements ScoringFactorInterface
     {
         return min($finalScore, 100);
     }
+
+    public function score(BigFootSighting $bigFootSighting): int
+    {
+        return 0;
+    }
 }
